@@ -359,6 +359,7 @@ public class ImagesPickerPlugin implements FlutterPlugin, MethodCallHandler, Act
   }
 
   private boolean hasPermission() {
+    if(Build.VERSION.SDK_INT > 32) return true;
     return Build.VERSION.SDK_INT < Build.VERSION_CODES.M ||
             (ContextCompat.checkSelfPermission(context, Manifest.permission.WRITE_EXTERNAL_STORAGE) == PERMISSION_GRANTED && ContextCompat.checkSelfPermission(context, Manifest.permission.READ_EXTERNAL_STORAGE) == PERMISSION_GRANTED);
   }
