@@ -32,7 +32,8 @@ public class SwiftImagesPickerPlugin: NSObject, FlutterPlugin {
       let cropOption = args!["cropOption"] as? NSDictionary;
       let theme = args!["theme"] as? NSDictionary;
       
-      let vc = UIApplication.shared.delegate!.window!!.rootViewController!;
+      let scene = UIApplication.shared.connectedScenes.first
+      let vc = ((scene as? UIWindowScene)!.delegate as! UIWindowSceneDelegate).window!!.rootViewController      
       let ac = ZLPhotoPreviewSheet();
       let config = ZLPhotoConfiguration.default();
       self.setLanguage(configuration: config, language: language);
